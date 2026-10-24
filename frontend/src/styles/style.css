@@ -1,0 +1,765 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/assets/images/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    padding-top: calc(80px + env(safe-area-inset-top));
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* === IRCTC THEME COLORS === */
+:root {
+    --irctc-blue: #003366;
+    --irctc-orange: #fb792b;
+    --irctc-light-bg: #f5f8fb;
+}
+
+.bg-irctc {
+    background-color: var(--irctc-blue) !important;
+    color: white !important;
+}
+
+.text-irctc {
+    color: var(--irctc-blue) !important;
+}
+
+/* Navbar Customization */
+.navbar-custom {
+    background-color: #ffffff !important; /* White background */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer shadow for white */
+    padding-top: 12px !important;    /* Increased height */
+    padding-bottom: 12px !important; /* Increased height */
+}
+.navbar-custom .navbar-brand {
+    color: var(--irctc-blue) !important; /* Official blue logo text */
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.navbar-custom .nav-link {
+    color: var(--irctc-blue) !important; /* Dark blue links */
+    font-weight: 600;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.navbar-custom .nav-link:hover {
+    color: var(--irctc-orange) !important; /* Orange on hover */
+    text-decoration: underline !important; /* Underline on hover */
+}
+.navbar-custom .navbar-welcome {
+    color: #555 !important; /* Dark grey for welcome text */
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand img {
+    height: 35px; /* Slightly larger logo to match new height */
+    margin-right: 10px;
+}
+/* Main container for centering content */
+.main-container {
+    padding: 20px;
+}
+
+/* Card style for forms and content blocks */
+.card-form {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Slightly deeper shadow */
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: 0;
+    border-top: 5px solid var(--irctc-orange); /* Add orange top border for branding */
+}
+.card-form h2 {
+    text-align: center;
+    color: var(--irctc-blue);
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Button Styles */
+.btn-orange {
+    background-color: var(--irctc-orange) !important;
+    border-color: var(--irctc-orange) !important;
+    color: white !important;
+    padding: 10px 15px;
+    font-size: 1.1rem; /* Slightly larger font */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.btn-orange:hover {
+    background-color: #e06820 !important;
+    border-color: #e06820 !important;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Table Styles */
+.table {
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: white;
+}
+.table thead th {
+    background-color: var(--irctc-blue); /* Dark blue headers */
+    color: white;
+    border-color: #002244;
+}
+
+/* Login-required modal (renamed from .modal so it no longer breaks Bootstrap modals) */
+.login-modal {
+    display: none; position: fixed; z-index: 1050; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);
+}
+.login-modal-content {
+    background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888;
+    width: 80%; max-width: 400px; text-align: center; border-radius: 8px; position: relative;
+}
+.close-button {
+    color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px;
+    font-weight: bold; cursor: pointer;
+}
+.close-button:hover, .close-button:focus { color: black; text-decoration: none; }
+.login-modal-content a.btn { margin-top: 15px; }
+
+/* Error/Success Messages */
+.message { padding: 10px; border-radius: 4px; margin-bottom: 15px; border: 1px solid transparent; }
+.success-message { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+.error-message { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+
+/* === BOOKING HISTORY STYLES === */
+.booking-card {
+    background-color: white;
+    border: none; /* Remove default border */
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Better shadow */
+    max-width: 900px;
+    margin-left: 0;
+    overflow: hidden; /* Ensures child elements don't break rounded corners */
+}
+.booking-header {
+    background-color: var(--irctc-blue); /* Dark blue header */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.booking-header h5 {
+    margin: 0;
+    color: white; /* White text on dark blue */
+    margin-bottom: 5px;
+}
+.booking-body {
+    padding: 20px;
+    background-color: var(--irctc-light-bg); /* Very light blue/gray background */
+}
+.booking-body .route {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--irctc-blue);
+}
+.status-CONFIRMED { color: #28a745; font-weight: bold; }
+.status-PENDING { color: #ffc107; font-weight: bold; }
+.status-CANCELLED { color: #dc3545; font-weight: bold; }
+
+.booking-footer {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+.booking-info p { margin-bottom: 0.5rem; }
+.booking-info strong { display: inline-block; min-width: 120px; color: #555; }
+
+/* === BOOKING PAGE STYLES === */
+.booking-summary {
+    background-color: var(--irctc-light-bg);
+    border-left: 5px solid var(--irctc-blue); /* Blue accent border */
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.booking-summary h3 {
+    margin-top: 0;
+    color: var(--irctc-blue);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.fare-details {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--irctc-blue);
+    margin-top: 15px;
+}
+.passenger-form {
+    border: 1px solid #e0e0e0;
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.passenger-form h5 {
+    color: var(--irctc-orange);
+    border-bottom: 2px solid var(--irctc-light-bg);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+/* === GLOBAL: HIDE SCROLLBAR (App-Like Feel) === */
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox, IE, and Edge */
+html, body {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* ================================================
+   RESPONSIVE STYLES - MOBILE FIRST
+   Breakpoints: xs(<480), sm(<576), md(<768), lg(<992)
+   ================================================ */
+
+/* === GLOBAL MOBILE FIXES === */
+* { box-sizing: border-box; }
+
+img { max-width: 100%; height: auto; }
+
+/* === NAVBAR === */
+@media (max-width: 991px) {
+    .navbar-custom {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+    .navbar-custom .navbar-brand {
+        font-size: 1rem;
+    }
+    .navbar-brand img {
+        height: 26px;
+    }
+    /* Collapsed menu items */
+    .navbar-custom .nav-link {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(0,51,102,0.08);
+    }
+    .navbar-custom .nav-link:last-child {
+        border-bottom: none;
+    }
+    /* Indian Railways logo in mobile nav */
+    .navbar-nav .nav-item img[alt="Indian Railways Logo"] {
+        height: 28px;
+        margin-left: 15px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+/* === BODY / LAYOUT === */
+@media (max-width: 768px) {
+    body {
+        padding-top: calc(65px + env(safe-area-inset-top));
+        background-attachment: scroll; /* Fixes bg on mobile */
+    }
+    .main-container {
+        padding: 10px;
+    }
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+/* === CARD FORM === */
+@media (max-width: 768px) {
+    .card-form {
+        padding: 20px 15px;
+        margin-top: 10px;
+        max-width: 100% !important;
+        border-radius: 6px;
+    }
+    .card-form h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* === HOME PAGE === */
+@media (max-width: 767px) {
+    /* Tagline hidden on mobile (already d-none d-md-block) */
+    .irctc-tagline {
+        display: none !important;
+    }
+    /* Search form full width */
+    .col-lg-5, .col-md-7 {
+        width: 100%;
+    }
+    .swap-container {
+        margin-top: -5px;
+        margin-bottom: -5px;
+    }
+    /* Header buttons in home card-form */
+    .row.g-0.text-center.mb-4 {
+        margin: -20px -15px 20px -15px !important;
+    }
+}
+
+/* === BOOKING PAGE === */
+@media (max-width: 768px) {
+    .booking-summary {
+        padding: 15px;
+    }
+    .booking-summary h3 {
+        font-size: 1.1rem;
+    }
+    .fare-details {
+        font-size: 1.1rem;
+    }
+    .passenger-form {
+        padding: 15px;
+    }
+    .passenger-form .row .col-md-6 {
+        margin-bottom: 10px;
+    }
+}
+
+/* === BOOKING HISTORY === */
+@media (max-width: 768px) {
+    .booking-card {
+        max-width: 100%;
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 12px 15px;
+    }
+    .booking-header h5 {
+        font-size: 0.95rem;
+    }
+    .booking-body {
+        padding: 15px;
+    }
+    .booking-body .route {
+        font-size: 1.1rem;
+    }
+    .booking-info strong {
+        min-width: 80px;
+    }
+    .booking-footer {
+        padding: 12px 15px;
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .booking-footer .btn {
+        font-size: 0.82rem;
+        padding: 6px 10px;
+        flex: 1 1 auto;
+    }
+    /* Two-column info to single column on mobile */
+    .booking-info .col-md-6 {
+        width: 100%;
+    }
+}
+
+/* === TRAINS SEARCH RESULTS PAGE === */
+@media (max-width: 768px) {
+    .search-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .search-header h4 {
+        font-size: 1.1rem;
+    }
+    .card-top {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px;
+    }
+    .train-info { min-width: unset; width: 100%; }
+    .train-schedule {
+        min-width: unset;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .duration-line { flex-grow: 1; margin: 0 10px; }
+    .time-val { font-size: 1rem; }
+    .class-tabs {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    .class-btn {
+        min-width: 120px;
+        padding: 8px 10px;
+    }
+    .cls-title { font-size: 0.85rem; }
+    .availability-panel { padding: 15px; }
+    .book-action {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .book-action .btn {
+        width: 100%;
+        text-align: center;
+    }
+    .final-price { font-size: 1.2rem; }
+}
+
+/* === TRAINS PAGE - date slider on mobile === */
+@media (max-width: 576px) {
+    .date-card {
+        min-width: 90px;
+        padding: 8px;
+    }
+    .date-val { font-size: 0.78rem; }
+    .status-val { font-size: 0.82rem; }
+}
+
+/* === SEAT SELECTION PAGE === */
+@media (max-width: 768px) {
+    .seat-selection-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 15px;
+        margin: -20px -15px 20px -15px;
+    }
+    .seat-selection-header .header-title {
+        font-size: 1.2rem;
+    }
+    .timer-pill { font-size: 0.9rem; padding: 6px 12px; }
+    .train-info-box { padding: 12px 15px; }
+    .train-info-box .col-md-6 { width: 100%; }
+    /* Seat map scrollable */
+    #seat-map-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+    /* Bottom action bar */
+    .d-flex.justify-content-between.align-items-center {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch !important;
+    }
+    .d-flex.justify-content-between.align-items-center form {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    .d-flex.justify-content-between.align-items-center form .btn {
+        width: 100%;
+    }
+    .legend-item { font-size: 0.78rem; }
+}
+
+/* === PAYMENT PAGE === */
+@media (max-width: 768px) {
+    .payment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+        margin: -20px -15px 20px -15px;
+    }
+    .timer-pill { width: 100%; justify-content: space-between; }
+    .gateway-option { padding: 12px 8px; }
+    .gateway-icon { font-size: 1.5rem; }
+    .gateway-option .fw-bold { font-size: 0.9rem; }
+    .stripe-box { padding: 20px 15px; }
+    .btn-stripe { font-size: 1rem; }
+}
+
+/* === PNR STATUS & LIVE STATUS FORMS === */
+@media (max-width: 576px) {
+    .card-form.text-center {
+        max-width: 100% !important;
+        margin: 10px auto !important;
+        padding: 20px 15px;
+    }
+    .form-control-lg.text-center {
+        font-size: 1.2rem !important;
+        letter-spacing: 1px;
+    }
+}
+
+/* === PNR RESULT PAGE === */
+@media (max-width: 768px) {
+    .ticket-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .ticket-body { padding: 15px; }
+    .ticket-body .col-md-4,
+    .ticket-body .col-md-4.text-md-end,
+    .ticket-body .col-md-4.text-md-center {
+        text-align: left !important;
+        margin-bottom: 10px;
+    }
+    .route-line { font-size: 1rem; }
+    .info-value { font-size: 1rem; }
+    /* Table horizontal scroll */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* === LIVE STATUS RESULT PAGE === */
+@media (max-width: 768px) {
+    .live-header { padding: 15px; }
+    .live-header h2 { font-size: 1.2rem; }
+    .tracker-container { padding: 15px; }
+    .timeline-wrapper { padding: 15px; }
+    .col-time { width: 70px; }
+    .t-val { font-size: 0.85rem; }
+    .station-title { font-size: 1rem; }
+}
+
+/* === FOOD ORDERING PAGE === */
+@media (max-width: 768px) {
+    .food-header { padding: 15px; }
+    .header-title { font-size: 1.2rem; }
+    .context-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .menu-item { padding: 12px 0; }
+    .item-action { min-width: 90px; }
+    .cart-bar {
+        width: 95%;
+        padding: 10px 15px;
+        bottom: 15px;
+    }
+}
+
+/* === PROFILE PAGE === */
+@media (max-width: 768px) {
+    .profile-header-icon { font-size: 3rem; }
+    .col-md-4, .col-md-8 {
+        margin-bottom: 8px;
+    }
+    .d-grid.gap-2.d-md-flex {
+        display: flex !important;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .d-grid.gap-2.d-md-flex .btn {
+        width: 100%;
+    }
+}
+
+/* === VERIFY OTP PAGE === */
+@media (max-width: 576px) {
+    .card-form.mx-auto {
+        max-width: 100% !important;
+        padding: 20px 15px;
+    }
+}
+
+/* === BOOKING SUCCESS PAGE === */
+@media (max-width: 576px) {
+    .success-icon { font-size: 60px; }
+    .lead { font-size: 1.1rem !important; }
+}
+
+/* === TABLE GLOBAL RESPONSIVE === */
+@media (max-width: 768px) {
+    .table { font-size: 0.85rem; }
+    .table th, .table td { padding: 8px 10px; }
+    /* Booking history summary table horizontal scroll */
+    .booking-body .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* === FOOTER === */
+@media (max-width: 576px) {
+    .developer-row {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    .irctc-footer {
+        padding: 12px 0;
+    }
+    .footer-label {
+        font-size: 0.72rem;
+    }
+    .copyright {
+        font-size: 0.7rem;
+        max-width: 90%;
+    }
+}
+
+/* === CHAT WIDGET === */
+@media (max-width: 576px) {
+    .chat-window {
+        width: calc(100vw - 20px) !important;
+        right: 10px !important;
+        bottom: 70px !important;
+        max-height: 60vh;
+    }
+}
+
+/* === MODAL (LOGIN MODAL IN HOME) === */
+@media (max-width: 576px) {
+    .login-modal-content {
+        width: 90%;
+        margin: 30% auto;
+        padding: 15px;
+    }
+}
+
+/* === GENERAL BUTTON TOUCH TARGETS === */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-orange {
+        font-size: 1rem !important;
+    }
+    /* Swap button stays circular */
+    .btn-swap {
+        min-height: unset;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ================================================================
+   ADDED IN REACT VERSION
+   ================================================================ */
+
+/* Sticky footer layout (from Footer.jsp, which the old pages never included) */
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+.user-shell { flex: 1 0 auto; display: flex; flex-direction: column; }
+.user-shell > main { flex: 1 0 auto; }
+
+/* Respect iPhone notch / Dynamic Island / home indicator */
+.navbar-custom.fixed-top {
+    padding-left: max(12px, env(safe-area-inset-left)) !important;
+    padding-right: max(12px, env(safe-area-inset-right)) !important;
+    padding-top: calc(12px + env(safe-area-inset-top)) !important;
+}
+.chat-btn { bottom: calc(30px + env(safe-area-inset-bottom)); right: calc(30px + env(safe-area-inset-right)); }
+
+/* Width helpers replacing inline style="max-width: 450px" etc. (rem so they scale on TVs) */
+.w-form-sm { max-width: 25rem !important; }      /* 400px */
+.w-form-md { max-width: 28.125rem !important; }  /* 450px */
+.w-form-lg { max-width: 31.25rem !important; }   /* 500px */
+.w-form-xl { max-width: 37.5rem !important; }    /* 600px */
+.w-form-2xl { max-width: 50rem !important; }     /* 800px */
+.w-form-3xl { max-width: 56.25rem !important; }  /* 900px */
+.card-form { max-width: 37.5rem; }
+.booking-card { max-width: 56.25rem; }
+
+/* Station autocomplete (replaces jQuery UI) */
+.ac-wrap { position: relative; flex: 1 1 auto; }
+.ac-list {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 1060;
+    background: #fff; border: 1px solid #ccc; border-radius: 0 0 6px 6px;
+    max-height: 260px; overflow-y: auto; list-style: none; margin: 0; padding: 0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.ac-list li { padding: 8px 12px; cursor: pointer; font-size: 0.95rem; }
+.ac-list li.active, .ac-list li:hover { background: #eef5ff; color: var(--irctc-blue); }
+
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, .class-btn:focus-visible, .date-card:focus-visible,
+.seat:focus-visible, .gateway-option:focus-visible {
+    outline: 3px solid var(--irctc-orange); outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Very small phones (iPhone SE / Galaxy Fold: 280-360px) ---------- */
+@media (max-width: 360px) {
+    .card-form { padding: 16px 12px; }
+    .card-form h2 { font-size: 1.15rem; }
+    .navbar-custom .navbar-brand { font-size: 0.9rem; }
+    .btn-orange { font-size: 0.95rem !important; }
+}
+
+/* ---------- Large laptops / desktops ---------- */
+@media (min-width: 1400px) {
+    .container { max-width: 1320px; }
+}
+
+/* ---------- Big monitors & TVs: scale the whole UI via root font-size ----------
+   Bootstrap and most of our sizes use rem, so raising the root size scales layout,
+   text and controls proportionally instead of leaving a tiny form in a huge screen. */
+@media (min-width: 1920px) {
+    html { font-size: 20px; }
+    .container { max-width: 1600px; }
+    body { padding-top: calc(90px + env(safe-area-inset-top)); }
+    .navbar-brand img { height: 42px; }
+}
+@media (min-width: 2560px) {
+    html { font-size: 27px; }
+    .container { max-width: 2100px; }
+    body { padding-top: 110px; }
+    .navbar-brand img { height: 52px; }
+}
+@media (min-width: 3400px) {
+    html { font-size: 36px; }
+    .container { max-width: 2900px; }
+    body { padding-top: 150px; }
+}
+
+/* Landscape phones: short viewport */
+@media (max-height: 500px) and (orientation: landscape) {
+    body { padding-top: 60px; }
+    .chat-window { height: 80vh !important; bottom: 80px !important; }
+}
+
+/* ===== Footer (from Footer.jsp inline <style>) ===== */
+.irctc-footer { width: 100%; background-color: #213d77; color: #fff; text-align: center;
+    padding: 15px 0 calc(15px + env(safe-area-inset-bottom)); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.2); margin-top: auto; flex-shrink: 0; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.footer-label { font-size: 0.8rem; color: #cfd8dc; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+.developer-row { display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 0.95rem; }
+.dev-name { color: #fb792b; font-weight: 700; text-transform: uppercase; }
+.social-group { display: flex; gap: 12px; }
+.social-icon { color: #fff; font-size: 1.1rem; transition: transform 0.2s, color 0.2s; display: flex; align-items: center; text-decoration: none; }
+.social-icon:hover { color: #fb792b; transform: scale(1.2); }
+.copyright { font-size: 0.75rem; color: #adb5bd; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; width: 90%; max-width: 350px; }
+@media (max-width: 450px) { .developer-row { flex-direction: column; gap: 5px; margin-bottom: 8px; } }
+.user-shell main { padding-bottom: 30px; }
+.navbar-custom .nav-link.active { color: var(--irctc-orange) !important; }
+.navbar-custom button.nav-link { border: none; background: none; }
+
+/* Preloader scales on big screens */
+@media (min-width: 1920px) { .loader-container { width: 10rem; height: 10rem; } .loader-logo { width: 4.5rem; } .loading-text { max-width: 40rem; font-size: 1rem; } }

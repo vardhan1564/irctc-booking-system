@@ -1,0 +1,274 @@
+/* Page-specific styles moved out of each JSP's inline <style>. Each block is scoped
+   under a page wrapper class, because in a single-page app all CSS is loaded at once. */
+
+/* ===================== HOME (home.jsp) ===================== */
+.page-home .swap-container { text-align: center; margin-top: -10px; margin-bottom: -10px; position: relative; z-index: 10; }
+.page-home .btn-swap {
+    background-color: var(--irctc-blue); color: white; border: 2px solid white; border-radius: 50%;
+    width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: all 0.3s ease;
+}
+.page-home .btn-swap:hover { background-color: var(--irctc-orange); color: white; transform: rotate(180deg); }
+.page-home .irctc-tagline {
+    color: var(--irctc-orange); text-align: center; margin-top: -30px; margin-left: 198px;
+    position: relative; z-index: 5; text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.page-home .irctc-tagline h1 { font-weight: 700; font-size: 3.8rem; margin-bottom: 0; }
+.page-home .irctc-tagline p { font-size: 1.5rem; font-weight: 600; color: white; margin-top: -5px; text-shadow: 0 0 8px rgba(0,0,0,0.8); }
+@media (max-width: 1199px) { .page-home .irctc-tagline { margin-left: 40px; } .page-home .irctc-tagline h1 { font-size: 3rem; } }
+@media (max-width: 991px) {
+    .page-home .irctc-tagline { margin-left: 0; margin-top: 0; text-align: center; }
+    .page-home .irctc-tagline h1 { font-size: 2.5rem; }
+    .page-home .irctc-tagline p { font-size: 1.1rem; }
+}
+/* iPad portrait: the right column is narrow, keep the tagline on as few lines as possible */
+@media (min-width: 768px) and (max-width: 991px) {
+    .page-home .irctc-tagline h1 { font-size: 1.9rem; line-height: 1.15; }
+    .page-home .irctc-tagline p { font-size: 0.95rem; margin-top: 4px; }
+}
+.page-home .header-tabs { margin: -30px -30px 30px -30px; }
+.page-home .header-btn {
+    background-color: var(--irctc-blue); color: white; transition: background 0.3s; display: block;
+    padding: 1rem 0.5rem; font-weight: 700; text-decoration: none;
+}
+.page-home .header-btn:hover { background-color: #004080; color: white; }
+.page-home .header-btn.left { border-right: 1px solid rgba(255,255,255,0.2); }
+@media (max-width: 768px) { .page-home .header-tabs { margin: -20px -15px 20px -15px; } }
+@media (max-width: 360px) { .page-home .header-btn { font-size: 0.85rem; } }
+
+/* Disclaimer popup (was inline styles) */
+.disclaimer-overlay { display: flex; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.6);
+    align-items: center; justify-content: center; padding: 15px; }
+.disclaimer-box { background: white; border-radius: 12px; max-width: 32.5rem; width: 100%; max-height: 92vh; overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4); border-top: 5px solid var(--irctc-orange); }
+.disclaimer-head { background: var(--irctc-blue); color: white; padding: 20px 25px; display: flex; align-items: center; gap: 12px; }
+.disclaimer-body { padding: 25px; }
+.disclaimer-body ul { color: #555; font-size: 0.92rem; line-height: 2; padding-left: 20px; margin-bottom: 20px; }
+.disclaimer-btn { background: var(--irctc-orange); color: white; border: none; width: 100%; padding: 13px;
+    border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.disclaimer-btn:hover { background: #e06820; }
+
+/* ===================== TRAINS (trains.jsp) ===================== */
+.page-trains .search-header {
+    background-color: var(--irctc-blue); color: white; padding: 20px 25px; border-radius: 8px;
+    border-top: 5px solid var(--irctc-orange); margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.page-trains .train-card { background: white; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: relative; transition: all 0.2s; border-left: 5px solid var(--irctc-orange); }
+.page-trains .train-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); border-color: #b0b0b0; }
+.page-trains .card-top { padding: 20px; display: flex; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #f1f1f1; }
+.page-trains .train-info { flex: 2; min-width: 200px; }
+.page-trains .train-name { font-size: 1.15rem; font-weight: 800; color: var(--irctc-blue); margin-bottom: 4px; }
+.page-trains .runs-on { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+.page-trains .train-schedule { flex: 3; display: flex; align-items: center; justify-content: center; min-width: 0; text-align: center; }
+.page-trains .time-val { font-size: 1.2rem; font-weight: 700; color: #333; }
+.page-trains .stn-val { font-size: 0.85rem; font-weight: 600; color: #555; margin-top: 2px; }
+.page-trains .duration-line { flex-grow: 1; height: 2px; background: #ddd; margin: 0 20px; position: relative; }
+.page-trains .duration-text { position: absolute; top: -20px; width: 100%; text-align: center; font-size: 0.75rem; color: #999; }
+.page-trains .class-tabs { padding: 10px 20px; background: #fafafa; display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
+.page-trains .class-tabs::-webkit-scrollbar { display: none; }
+.page-trains .class-btn { border: 1px solid #ddd; background: white; border-radius: 6px; padding: 10px 15px;
+    min-width: 140px; cursor: pointer; text-align: left; transition: all 0.2s; flex-shrink: 0; }
+.page-trains .class-btn:hover { background: #f0f8ff; border-color: var(--irctc-blue); }
+.page-trains .class-btn.active { background: #eef5ff; border: 1px solid var(--irctc-orange); border-bottom-width: 3px; }
+.page-trains .class-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.page-trains .cls-title { font-size: 0.95rem; font-weight: 700; color: #003366; display: block; }
+.page-trains .cls-sub { font-size: 0.75rem; color: var(--irctc-orange); margin-top: 2px; display: block; font-weight: 600; }
+.page-trains .availability-panel { padding: 20px; background: #fff; border-top: 1px solid #eee;
+    animation: slideDown 0.3s ease-out; position: relative; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.page-trains .date-slider { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+.page-trains .date-card { flex: 1; min-width: 110px; background: white; border: 1px solid #e0e0e0; border-radius: 6px;
+    padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.page-trains .date-card:hover { background: #f0f8ff; border-color: var(--irctc-blue); }
+.page-trains .date-card.selected { border: 1px solid var(--irctc-orange); background: #fff9f2; }
+.page-trains .date-val { font-weight: 700; font-size: 0.85rem; margin-bottom: 5px; color: #333; }
+.page-trains .status-val { font-weight: 800; font-size: 0.9rem; color: #28a745; }
+.page-trains .status-wl { color: #dc3545; }
+.page-trains .status-rac { color: #ffc107; }
+.page-trains .book-action { margin-top: 20px; display: flex; justify-content: space-between; align-items: center;
+    padding-top: 15px; border-top: 1px dashed #eee; gap: 12px; }
+.page-trains .final-price { font-size: 1.5rem; font-weight: 800; color: #003366; }
+.page-trains .btn-minimize { position: absolute; bottom: 10px; right: 10px; background: #f0f0f0; border: none; border-radius: 50%;
+    width: 30px; height: 30px; color: #555; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.page-trains .btn-minimize:hover { background: #e0e0e0; color: #000; }
+@media (max-width: 576px) {
+    .page-trains .train-info { min-width: 100%; flex: unset; }
+    .page-trains .train-schedule { min-width: 100%; flex: unset; justify-content: space-between; }
+    .page-trains .btn-minimize { bottom: auto; top: 10px; }
+}
+
+/* ===================== SEAT SELECTION + PAYMENT (shared header pattern) ===================== */
+.page-seat .seat-selection-header, .page-payment .payment-header {
+    background-color: var(--irctc-blue); color: white; padding: 20px 30px; margin: -30px -30px 25px -30px;
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+}
+.page-seat .seat-selection-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.page-payment .payment-header { border-bottom: 4px solid var(--irctc-orange); }
+.page-seat .header-title { margin: 0; font-weight: 700; font-size: 1.5rem; letter-spacing: 0.5px; }
+.page-payment .header-title { font-weight: 700; font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
+.page-seat .timer-pill, .page-payment .timer-pill {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px;
+    border-radius: 30px; display: flex; align-items: center; gap: 10px; font-size: 1rem; backdrop-filter: blur(5px);
+}
+.page-seat .timer-count, .page-payment .timer-count { font-weight: 800; font-family: 'Courier New', monospace; font-size: 1.2rem; color: #ffc107; }
+.page-seat .timer-count.text-danger, .page-payment .timer-count.text-danger { color: #ff6b6b !important; }
+.page-seat .train-info-box { background-color: #f8f9fa; border-left: 5px solid var(--irctc-orange); padding: 15px 20px;
+    margin-bottom: 25px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.page-seat .legend-item { font-size: 0.85rem; color: #555; font-weight: 600; }
+.page-seat .legend-box { width: 18px; height: 18px; border-radius: 4px; display: inline-block; }
+.page-seat .seat-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; display: flex; justify-content: center; }
+.page-seat .seat-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.page-seat .seat-actions .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.page-payment .pay-summary { background-color: #f8f9fa; border-left: 5px solid var(--irctc-orange); padding: 15px 20px;
+    border-radius: 4px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.page-payment .gateway-option { border: 2px solid #eee; border-radius: 8px; padding: 15px; cursor: pointer;
+    transition: all 0.2s; text-align: center; background: #fff; width: 100%; }
+.page-payment .gateway-option:hover { border-color: #ccc; background: #f9f9f9; }
+.page-payment .gateway-option.active { border-color: var(--irctc-blue); background: #eef5ff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.page-payment .gateway-icon { font-size: 2rem; margin-bottom: 5px; display: block; }
+.page-payment .payment-section { animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.page-payment .stripe-box { background: #f7f9fc; border: 1px solid #e6e9ef; border-radius: 8px; padding: 30px; text-align: center; }
+.page-payment .btn-stripe { background-color: #635bff; color: white; font-weight: 600; padding: 12px 20px; border-radius: 4px;
+    transition: background 0.2s; border: none; width: 100%; font-size: 1.1rem; }
+.page-payment .btn-stripe:hover { background-color: #4b42e3; color: white; }
+.page-payment .btn-stripe:disabled { opacity: 0.75; }
+
+@media (max-width: 768px) {
+    .page-seat .seat-selection-header, .page-payment .payment-header {
+        flex-direction: column; align-items: flex-start; padding: 15px; margin: -20px -15px 20px -15px;
+    }
+    .page-seat .header-title, .page-payment .header-title { font-size: 1.2rem; }
+    .page-seat .timer-pill, .page-payment .timer-pill { width: 100%; justify-content: space-between; font-size: 0.9rem; }
+    .page-seat .seat-actions { flex-direction: column; align-items: stretch; }
+    .page-seat .seat-actions .btns { flex-direction: column; }
+    .page-seat .seat-actions .btns .btn { width: 100%; }
+    .page-payment .stripe-box { padding: 20px 15px; }
+}
+
+/* ===================== BOOKING SUCCESS ===================== */
+.page-success .success-icon { font-size: 80px; color: #28a745; line-height: 1; margin-bottom: 20px; }
+@media (max-width: 576px) { .page-success .success-icon { font-size: 60px; } }
+
+/* ===================== PROFILE ===================== */
+.page-profile .profile-header-icon { font-size: 4rem; color: var(--irctc-blue); }
+.page-profile .verified-badge, .page-profile .unverified-badge { font-weight: bold; font-size: 0.9rem; padding: 2px 8px; border-radius: 12px; }
+.page-profile .verified-badge { color: #198754; background: #d1e7dd; border: 1px solid #badbcc; }
+.page-profile .unverified-badge { color: #dc3545; background: #f8d7da; border: 1px solid #f5c6cb; }
+
+/* ===================== PNR RESULT ===================== */
+.page-pnr-result .ticket-card { background: white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden; margin: 30px 0; border: none; }
+.page-pnr-result .ticket-header { background: linear-gradient(to right, #f8f9fa, #fff); padding: 20px 25px;
+    border-bottom: 2px dashed #ccc; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.page-pnr-result .ticket-body { padding: 30px; }
+.page-pnr-result .route-line { color: var(--irctc-blue); font-size: 1.2rem; font-weight: 700; }
+.page-pnr-result .info-label { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.page-pnr-result .info-value { font-size: 1.1rem; font-weight: 700; color: #333; }
+.page-pnr-result .status-badge { padding: 6px 12px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px; }
+.page-pnr-result .status-cnf { background: #e6f4ea; color: #1e7e34; }
+.page-pnr-result .status-wl { background: #fff3cd; color: #856404; }
+.page-pnr-result .status-can { background: #f8d7da; color: #721c24; }
+.page-pnr-result .source-badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold; }
+.page-pnr-result .table thead th { background: #f8f9fa; color: #333; border-color: #dee2e6; }
+@media (max-width: 768px) { .page-pnr-result .ticket-body { padding: 15px; } .page-pnr-result .route-line { font-size: 1rem; } }
+
+/* ===================== LIVE STATUS RESULT ===================== */
+.page-live .live-card { background: white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); overflow: hidden; margin: 30px 0; border: 1px solid #e0e0e0; }
+.page-live .live-header { background: linear-gradient(135deg, var(--irctc-blue) 0%, #002a55 100%); color: white; padding: 25px 30px; }
+.page-live .tracker-container { padding: 30px; background: #f8f9fa; border-bottom: 1px solid #eee; }
+.page-live .progress-track { height: 6px; background: #e0e0e0; border-radius: 3px; position: relative; margin: 20px 16px; }
+.page-live .progress-fill { height: 100%; background: var(--irctc-orange); border-radius: 3px; position: relative;
+    box-shadow: 0 0 10px rgba(251,121,43,0.4); transition: width 1.5s ease-in-out; }
+.page-live .train-icon-puck { position: absolute; right: -16px; top: -13px; width: 32px; height: 32px; background: white;
+    border: 3px solid var(--irctc-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--irctc-orange); box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 2; }
+.page-live .track-labels { display: flex; justify-content: space-between; font-size: 0.85rem; color: #666; font-weight: 600; text-transform: uppercase; }
+.page-live .timeline-wrapper { padding: 20px 30px; }
+.page-live .timeline-row { display: flex; position: relative; padding-bottom: 30px; }
+.page-live .timeline-row:last-child { padding-bottom: 0; }
+.page-live .col-time { width: 90px; text-align: right; padding-right: 20px; display: flex; flex-direction: column; flex-shrink: 0; }
+.page-live .t-label { font-size: 0.75rem; color: #999; font-weight: 600; }
+.page-live .t-val { font-size: 0.95rem; color: #333; font-weight: 700; }
+.page-live .col-line { width: 30px; position: relative; display: flex; justify-content: center; flex-shrink: 0; }
+.page-live .v-line { position: absolute; top: 5px; bottom: -5px; width: 3px; background: #e9ecef; z-index: 1; }
+.page-live .timeline-row:last-child .v-line { display: none; }
+.page-live .v-dot { width: 14px; height: 14px; background: #fff; border: 3px solid #ccc; border-radius: 50%; z-index: 2; margin-top: 5px; }
+.page-live .timeline-row.current .v-dot { width: 22px; height: 22px; background: var(--irctc-orange); border: 4px solid #fff;
+    box-shadow: 0 0 0 3px var(--irctc-orange); margin-top: 1px; }
+.page-live .timeline-row.next .v-dot { border-color: var(--irctc-blue); background: #eef5ff; }
+.page-live .col-content { flex: 1; padding-left: 10px; min-width: 0; }
+.page-live .station-title { font-size: 1.1rem; font-weight: 800; color: #333; margin-bottom: 2px; }
+.page-live .station-desc { font-size: 0.9rem; color: #666; }
+.page-live .status-pill { background: #f8f9fa; border: 1px solid #eee; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;
+    font-weight: 700; color: #555; display: inline-block; margin-bottom: 4px; }
+.page-live .pill-current { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+@media (max-width: 576px) {
+    .page-live .live-header { padding: 15px; } .page-live .live-header h2 { font-size: 1.1rem; }
+    .page-live .tracker-container { padding: 15px; } .page-live .timeline-wrapper { padding: 15px; }
+    .page-live .col-time { width: 64px; padding-right: 10px; } .page-live .t-val { font-size: 0.82rem; }
+    .page-live .station-title { font-size: 0.95rem; }
+}
+
+/* ===================== FOOD ORDERING ===================== */
+.page-food .food-header { background: linear-gradient(to right, #fff3cd, #ffffff); border-left: 5px solid var(--irctc-orange);
+    padding: 25px 30px; margin: -30px -30px 30px -30px; border-radius: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.page-food .header-title { font-weight: 800; font-size: 1.5rem; color: #333; letter-spacing: -0.5px; }
+.page-food .context-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px; }
+.page-food .menu-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0; transition: all 0.2s; background: white; }
+.page-food .menu-item:last-child { border-bottom: none; }
+.page-food .menu-item:hover { background-color: #fafafa; padding-left: 10px; padding-right: 10px; border-radius: 8px; }
+.page-food .item-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-top: 3px; flex-shrink: 0; }
+.page-food .veg { border: 1px solid #28a745; } .page-food .veg i { color: #28a745; font-size: 10px; }
+.page-food .non-veg { border: 1px solid #dc3545; } .page-food .non-veg i { color: #dc3545; font-size: 10px; }
+.page-food .item-content { margin-left: 15px; flex-grow: 1; padding-right: 15px; min-width: 0; }
+.page-food .item-title { font-weight: 700; color: var(--irctc-blue); font-size: 1.05rem; margin-bottom: 4px; cursor: pointer;
+    display: inline-block; transition: color 0.2s; background: none; border: none; padding: 0; text-align: left; }
+.page-food .item-title:hover { color: var(--irctc-orange); }
+.page-food .item-desc { color: #777; font-size: 0.85rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.page-food .item-action { text-align: right; min-width: 110px; }
+.page-food .item-price { font-weight: 700; font-size: 1.1rem; color: #333; display: block; margin-bottom: 8px; }
+.page-food .btn-add { background: white; color: var(--irctc-orange); border: 1px solid var(--irctc-orange); font-weight: 700;
+    font-size: 0.8rem; padding: 6px 20px; border-radius: 4px; text-transform: uppercase; transition: all 0.2s; cursor: pointer; width: 90px; }
+.page-food .btn-add:hover { background: #fff5f0; }
+.page-food .qty-control { display: inline-flex; align-items: center; justify-content: space-between; background: white;
+    border: 1px solid var(--irctc-orange); border-radius: 4px; width: 90px; height: 32px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.page-food .qty-btn { width: 28px; height: 100%; border: none; background: transparent; color: var(--irctc-orange);
+    font-weight: 900; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.page-food .qty-btn:hover { background-color: #fff5f0; }
+.page-food .qty-val { font-weight: 700; font-size: 0.9rem; color: #333; }
+.page-food .accordion-item { border: none; border-bottom: 1px solid #e0e0e0; background: transparent; }
+.page-food .accordion-button { background-color: #f8f9fa; color: var(--irctc-blue); font-weight: 700; box-shadow: none !important;
+    border-radius: 8px !important; margin-bottom: 10px; }
+.page-food .accordion-button:not(.collapsed) { background-color: var(--irctc-blue); color: white; }
+.page-food .accordion-button:not(.collapsed)::after { filter: brightness(0) invert(1); }
+.page-food .accordion-body { padding: 0 10px 20px 10px; }
+.cart-bar { position: fixed; bottom: calc(30px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+    background: #212529; color: white; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center;
+    justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000; width: 90%; max-width: 31.25rem;
+    border: 1px solid rgba(255,255,255,0.1); }
+.cart-drawer .offcanvas-header { background: var(--irctc-light-bg); border-bottom: 1px solid #ddd; }
+.cart-item-row { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
+.cart-item-name { font-size: 0.95rem; color: #333; font-weight: 600; }
+.cart-item-price { font-weight: 700; color: var(--irctc-blue); }
+.cart-summary { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; }
+.react-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1040; }
+.react-offcanvas { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw); background: white; z-index: 1045;
+    display: flex; flex-direction: column; box-shadow: -4px 0 20px rgba(0,0,0,0.2); animation: slideInRight 0.25s ease-out;
+    padding-bottom: env(safe-area-inset-bottom); }
+@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+.react-modal { position: fixed; inset: 0; z-index: 1055; display: flex; align-items: center; justify-content: center; padding: 15px; }
+.react-modal .modal-content { max-width: 31.25rem; width: 100%; }
+.toast-float { position: fixed; bottom: calc(100px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); z-index: 1100;
+    min-width: 280px; max-width: 92vw; }
+@media (max-width: 768px) {
+    .page-food .food-header { padding: 15px; margin: -20px -15px 20px -15px; }
+    .page-food .header-title { font-size: 1.2rem; }
+    .page-food .item-action { min-width: 90px; }
+    .cart-bar { width: 95%; padding: 10px 15px; bottom: calc(15px + env(safe-area-inset-bottom)); }
+}

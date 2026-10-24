@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.local
+
+# Build output
+target/
+node_modules/
+dist/
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+.DS_Store
+Thumbs.db
+*.log
+
+# Local-only files kept outside the repo
+IRCTC_SpringBoot_React/
+*.zip
+MIGRATION_AND_INTERVIEW_GUIDE.md
+.github/modernize/

@@ -1,0 +1,71 @@
+# ============================================================
+#  IRCTC Clone - Spring Boot configuration
+#  Every secret comes from an environment variable or from a
+#  local ".env" file (see .env.example). Nothing secret is
+#  committed to Git anymore.
+# ============================================================
+spring:
+  application:
+    name: irctc-backend
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/irctc?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:tiger}
+    hikari:
+      maximum-pool-size: 10          # same pool size the old DBConnection used
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      # "update" adds missing tables/columns (e.g. bookings.class_code) and never drops data.
+      # Switch to "validate" or "none" once your schema is final.
+      ddl-auto: ${DDL_AUTO:update}
+    properties:
+      hibernate:
+        format_sql: false
+    show-sql: false
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  cors-allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
+  timezone: Asia/Kolkata
+  jwt:
+    # Must be at least 32 characters. Generate one with: openssl rand -base64 48
+    secret: ${JWT_SECRET:dev-only-secret-change-me-dev-only-secret-change-me-123456}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:1440}
+  booking:
+    hold-minutes: 10                 # seat-selection + payment window (same as old 10-minute rule)
+    stale-pending-minutes: 40        # scheduler cancels PENDING bookings older than this
+    max-passengers: 6
+  stripe:
+    secret-key: ${STRIPE_SECRET_KEY:}
+  rapidapi:
+    key: ${RAPIDAPI_KEY:}
+    host: ${RAPIDAPI_HOST:irctc-api2.p.rapidapi.com}
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-2.5-flash}
+
+logging:
+  level:
+    com.irctc: INFO

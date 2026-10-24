@@ -1,0 +1,59 @@
+# Full stack: MySQL + Spring Boot API + React (nginx)
+#   cp .env.example .env   # adjust values
+#   docker compose up --build
+# App: http://localhost:3000   API: http://localhost:8080/api/health
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: irctc-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-irctc_root}
+      MYSQL_DATABASE: irctc
+      TZ: Asia/Kolkata
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./backend/database/sample_data.sql:/docker-entrypoint-initdb.d/02-sample_data.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${DB_PASSWORD:-irctc_root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: irctc-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/irctc?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      DB_USERNAME: root
+      DB_PASSWORD: ${DB_PASSWORD:-irctc_root}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      RAPIDAPI_KEY: ${RAPIDAPI_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: irctc-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql_data:
